@@ -23,13 +23,11 @@ class GoogleScreen extends StatelessWidget {
   Future<void> openGoogle() async {
     final Uri url = Uri.parse('https://www.google.com');
 
-    try {
+    if (await canLaunchUrl(url)) {
       await launchUrl(
         url,
         mode: LaunchMode.externalApplication,
       );
-    } catch (e) {
-      debugPrint('Google open nahi hua: $e');
     }
   }
 
